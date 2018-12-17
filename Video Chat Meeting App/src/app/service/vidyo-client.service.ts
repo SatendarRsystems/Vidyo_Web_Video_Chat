@@ -465,6 +465,8 @@ export class VidyoClientService {
     * Description: function to set the selected device (i.e. camera,microphone and speaker)
     */
     handleDeviceChange = (deviceType, deviceData) => {
+        deviceData = deviceData.name === 'None' ? null : deviceData;
+
         switch (deviceType) {
             case 'camera':
                 this.vidyoConnector.SelectLocalCamera({
