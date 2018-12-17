@@ -443,13 +443,10 @@ export class VidyoClientService {
     /**
     * Description: function to reset application data.
     */
-    deInitAppData=()=>{
-        this.users = [];
-        this.cameras = [];
-        this.microphones = [];
-        this.speakers = [];
+    deInitAppData = () => {
+        this.intializeValue();
     }
-    
+
     /**
     * Description: function to get all connected device(i.e. camera,microphone and speaker) information
     * @return deviceData
@@ -512,6 +509,6 @@ export class VidyoClientService {
     */
     ShowRenderer = () => {
         const rndr = document.getElementById('video-section');
-        this.vidyoConnector.ShowViewAt({viewId: 'video-section', x: rndr.offsetLeft, y: rndr.offsetTop, width: rndr.offsetWidth, height: rndr.offsetHeight});
+        this.vidyoConnector.ShowViewAt({ viewId: 'video-section', x: rndr.offsetLeft, y: rndr.offsetTop, width: rndr.offsetWidth, height: rndr.offsetHeight });
     }
 }
