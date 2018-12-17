@@ -209,6 +209,7 @@ export class VidyoClientService {
             },
             onSelected: (localMicrophone) => {
                 // Microphone was selected/unselected by you or automatically
+              
                 if (localMicrophone) {
                     this.selectedLocalMicrophone = localMicrophone.id;
                 } else {
@@ -476,6 +477,7 @@ export class VidyoClientService {
                 }).catch(function () {
                     console.error('SelectCamera Failed');
                 });
+                deviceData === null ? this.selectedLocalCamera = 0 :"" ;
                 break;
             case 'microphone':
                 this.vidyoConnector.SelectLocalMicrophone({
@@ -485,6 +487,7 @@ export class VidyoClientService {
                 }).catch(function () {
                     console.error('Select Microphone Failed');
                 });
+                deviceData === null ? this.selectedLocalMicrophone = 0 :"" ;
                 break;
             case 'speaker':
                 this.vidyoConnector.SelectLocalSpeaker({
@@ -494,6 +497,7 @@ export class VidyoClientService {
                 }).catch(function () {
                     console.error('Select Speaker Failed');
                 });
+                deviceData === null ? this.selectedLocalSpeaker = 0 :"" ;
                 break;
         }
     }
