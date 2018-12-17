@@ -432,14 +432,24 @@ export class VidyoClientService {
         this.vidyoConnector.Disconnect().then(() => {
             this.vidyoConnector.SetCameraPrivacy({ privacy: true });
             this.vidyoConnector.SetMicrophonePrivacy({ privacy: true });
-            this.users = [];
+            this.deInitAppData();
             this.router.navigate([redirect]);
         }).catch(() => {
-            this.users = [];
+            this.deInitAppData();
             this.router.navigate([redirect]);
         });
     }
 
+    /**
+    * Description: function to reset application data.
+    */
+    deInitAppData=()=>{
+        this.users = [];
+        this.cameras = [];
+        this.microphones = [];
+        this.speakers = [];
+    }
+    
     /**
     * Description: function to get all connected device(i.e. camera,microphone and speaker) information
     * @return deviceData
