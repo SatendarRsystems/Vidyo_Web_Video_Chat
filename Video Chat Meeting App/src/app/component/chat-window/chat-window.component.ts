@@ -49,8 +49,7 @@ export class ChatWindowComponent implements OnInit, AfterViewInit {
   * Description: redirect to login page.
   */
   close() {
-    const redirect = '/login';
-    this.router.navigate([redirect]);
+    this.vidyoClientService.logout();
   }
 
   /**
@@ -68,4 +67,3 @@ export class ChatWindowComponent implements OnInit, AfterViewInit {
     this.vidyoClientService.initVidyoConnector();   // init vidyo connector
   }
 }
-

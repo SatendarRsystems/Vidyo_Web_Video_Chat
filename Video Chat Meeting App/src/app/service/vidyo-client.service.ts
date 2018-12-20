@@ -209,7 +209,6 @@ export class VidyoClientService {
             },
             onSelected: (localMicrophone) => {
                 // Microphone was selected/unselected by you or automatically
-              
                 if (localMicrophone) {
                     this.selectedLocalMicrophone = localMicrophone.id;
                 } else {
@@ -430,9 +429,7 @@ export class VidyoClientService {
     */
     logout = () => {
         const redirect = '/login';
-        this.vidyoConnector.Disconnect().then(() => {
-            this.vidyoConnector.SetCameraPrivacy({ privacy: true });
-            this.vidyoConnector.SetMicrophonePrivacy({ privacy: true });
+        this.vidyoConnector.Disable().then(() => {
             this.deInitAppData();
             this.router.navigate([redirect]);
         }).catch(() => {
@@ -477,7 +474,7 @@ export class VidyoClientService {
                 }).catch(function () {
                     console.error('SelectCamera Failed');
                 });
-                deviceData === null ? this.selectedLocalCamera = 0 :"" ;
+                this.selectedLocalCamera = deviceData === null ?  0 : this.selectedLocalCamera ;
                 break;
             case 'microphone':
                 this.vidyoConnector.SelectLocalMicrophone({
@@ -487,7 +484,7 @@ export class VidyoClientService {
                 }).catch(function () {
                     console.error('Select Microphone Failed');
                 });
-                deviceData === null ? this.selectedLocalMicrophone = 0 :"" ;
+                this.selectedLocalMicrophone = deviceData === null ?  0 : this.selectedLocalMicrophone ;
                 break;
             case 'speaker':
                 this.vidyoConnector.SelectLocalSpeaker({
@@ -497,7 +494,7 @@ export class VidyoClientService {
                 }).catch(function () {
                     console.error('Select Speaker Failed');
                 });
-                deviceData === null ? this.selectedLocalSpeaker = 0 :"" ;
+                this.selectedLocalSpeaker = deviceData === null ?  0 : this.selectedLocalSpeaker ;
                 break;
         }
     }
